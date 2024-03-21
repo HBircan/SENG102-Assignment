@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+class Person {
+private:
+	string name;
+	string address;
+	int age;
+	int number;
+
+public:
+	void setname(string);
+	void setaddress(string);
+	void setage(int);
+	void setnumber(int);
+	string getname()const;
+	string getaddress()const;
+	int getage()const;
+	int getnumber()const;
+};
+void Person::setname(string n) {
+	name = n;
+}
+void Person::setaddress(string a) {
+	address = a;
+}
+void Person::setage(int a) {
+	age = a;
+}
+void Person::setnumber(int n) {
+	number = n;
+}
+string Person::getname()const {
+	return name;
+}
+string Person::getaddress()const {
+	return address;
+}
+int Person::getage()const {
+	return age;
+}
+int Person::getnumber()const {
+	return number;
+}
+
+int main() {
+
+	Person a;
+	Person b;
+	Person c;
+
+	a.setname("Mark");
+	a.setaddress("California");
+	a.setage(34);
+	a.setnumber(2702);
+
+	b.setname("Bob");
+	b.setaddress("California");
+	b.setage(34);
+	b.setnumber(9416);
+
+	c.setname("Wade");
+	c.setaddress("Ohio");
+	c.setage(34);
+	c.setnumber(5791);
+
+	cout << a.getname() << " " << a.getaddress() << " " << a.getage() << " " << a.getnumber() << endl;
+	cout << b.getname() << " " << b.getaddress() << " " << b.getage() << " " << b.getnumber() << endl;
+	cout << c.getname() << " " << c.getaddress() << " " << c.getage() << " " << c.getnumber() << endl;
+}
