@@ -1,0 +1,95 @@
+#include <iostream>
+using namespace std;
+
+class Inventory {
+private:
+	int itemNumber;
+	int quantity;
+	double cost;
+	double totalCost;
+
+public:
+	Inventory();
+	Inventory(int, int, double);
+	void setnum(int);
+	void setquantity(int);
+	void setcost(double);
+	void settotal();
+	int getnum()const;
+	int getquantity()const;
+	double getcost()const;
+	double gettotal()const;
+};
+Inventory::Inventory() {
+	itemNumber = 0;
+	quantity = 0;
+	cost = 0;
+	totalCost = 0;
+}
+Inventory::Inventory(int n,int q,double c) {
+	itemNumber = n;
+	quantity = q;
+	cost = c;
+	settotal();
+}
+void Inventory::setnum(int n) {
+	itemNumber = n;
+}
+void Inventory::setquantity(int a) {
+	quantity = a;
+}void Inventory::setcost(double n) {
+	cost = n;
+}
+void Inventory::settotal() {
+	totalCost = quantity * cost;
+}
+int Inventory::getnum()const {
+	return itemNumber;
+}
+int Inventory::getquantity()const {
+	return quantity;
+}
+double Inventory::getcost()const {
+	return cost;
+}
+double Inventory::gettotal()const {
+	return totalCost;
+}
+
+int main() {
+	Inventory item;
+	int num;
+	int quan;
+	double cost;
+	double total;
+
+	cout << "\nEnter the item number as an integer: ";
+	cin >> num;
+
+	if (num >= 0)
+		item.setnum(num);
+	else {
+		cout << "Invalid value.";
+		return 0;
+	}
+
+	cout << "\nEnter the quantity as an integer: ";
+	cin >> quan;
+
+	if (quan >= 0)
+		item.setquantity(quan);
+	else {
+		cout << "Invalid value.";
+		return 0;
+	}
+	cout << "\nEnter the cost as an integer: ";
+	cin >> cost;
+	item.setcost(cost);
+	item.settotal();
+
+	cout << "\nThe information for inventory you entered is:" << endl;
+	cout << "Item number: " << item.getnum() << endl;
+	cout << "Quantity: " << item.getquantity() << endl;
+	cout << "Cost: " << item.getcost() << endl;
+	cout << "Total Cost: " << item.gettotal() << endl;
+}
