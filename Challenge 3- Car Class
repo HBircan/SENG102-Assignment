@@ -44,7 +44,7 @@ int Car::getspeed()const {
 }
 void Car::accelarate() {
 	speed = speed + 5;
-	
+
 }
 void Car::brake() {
 	speed = speed - 5;
@@ -52,12 +52,13 @@ void Car::brake() {
 
 int main() {
 
-	Car myCar(2020,"TOGG");
-	
+	Car myCar(2020, "TOGG");
+	cout << "The year model of the car is " << myCar.getyear() << endl;
+	cout << "The make of the car is " << myCar.getmake() << endl;
 	cout << "The speed of the car at the beginning is " << myCar.getspeed() << endl;
 	for (int i = 1; i <= 5; i++) {
-		myCar.accelarate();	
-		cout << "The current speed of the car after accelareting #"<<i<<" is: " << myCar.getspeed() << endl;
+		myCar.accelarate();
+		cout << "The current speed of the car after accelareting #" << i << " is: " << myCar.getspeed() << endl;
 	}
 	for (int i = 1; i <= 5; i++) {
 		myCar.brake();
