@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+class TestScores {
+private:
+	int grade1;
+	int grade2;
+	int grade3;
+
+public:
+	TestScores();
+	void setgrade1(int);
+	void setgrade2(int);
+	void setgrade3(int);
+	int getgrade1()const;
+	int getgrade2()const;
+	int getgrade3()const;
+	int getaverage();
+};
+
+TestScores::TestScores() {
+	grade1 = 0;
+	grade2 = 0;
+	grade3 = 0;
+}
+void TestScores::setgrade1(int y) {
+	grade1 = y;
+}
+void TestScores::setgrade2(int m) {
+	grade2 = m;
+}
+void TestScores::setgrade3(int s) {
+	grade3 = s;
+}
+int TestScores::getgrade1()const {
+	return grade1;
+}
+int TestScores::getgrade2()const {
+	return grade2;
+}
+int TestScores::getgrade3()const {
+	return grade3;
+}
+int TestScores::getaverage() {
+	return (grade1 + grade2 + grade3) / 3;
+}
+
+int main() {
+	TestScores grades;
+	int scores[3];
+
+	for (int i = 0; i < 3; i++) {
+		cout << "Enter grade #" << (i+1) << " : ";
+		cin >> scores[i];
+	}
+	grades.setgrade1(scores[0]);
+	grades.setgrade2(scores[1]);
+	grades.setgrade3(scores[2]);
+
+	cout << "\nThe grades you entered are:" << endl;
+	cout << " Grade #1: " << grades.getgrade1() << endl;
+	cout << " Grade #2: " << grades.getgrade2() << endl;
+	cout << " Grade #3: " << grades.getgrade3() << endl;
+	cout << "The average of the grades: " << grades.getaverage() << endl;
+}
