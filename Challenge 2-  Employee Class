@@ -1,1 +1,91 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
+class Employee {
+private:
+	string name;
+	int idNumber;
+	string department;
+	string position;
+
+public:
+	Employee();
+	Employee(string, int, string, string);
+	Employee(string, int);
+	void setname(string);
+	void setid(int);
+	void setdepartment(string);
+	void setposition(string);
+	string getname()const;
+	int getid()const;
+	string getdepartment()const;
+	string getposition()const;
+
+};
+
+Employee::Employee() {
+	name = " ";
+	idNumber = 0;
+	department = " ";
+	position = " ";
+}
+Employee::Employee(string n, int i, string d, string p) {
+	name = n;
+	idNumber = i;
+	department = d;
+	position = p;
+}
+Employee::Employee(string n, int i) {
+	name = n;
+	idNumber = i;
+	department = " ";
+	position = " ";
+}
+void Employee::setname(string n) {
+	name = n;
+}
+void Employee::setid(int i) {
+	idNumber = i;
+}
+void Employee::setdepartment(string d) {
+	department = d;
+}
+void Employee::setposition(string p) {
+	position = p;
+}
+string Employee::getname()const {
+	return name;
+}
+int Employee::getid()const {
+	return idNumber;
+}
+string Employee::getdepartment()const {
+	return department;
+}
+string Employee::getposition()const {
+	return position;
+}
+
+int main() {
+
+	Employee emp1("Susan Meyers", 47899, "Accounting", "Vice President");
+	Employee emp2("Mark Jones",39119);
+	Employee emp3;
+	string name;
+	int id;
+	string department;
+	string position;
+
+	emp2.setdepartment("IT");
+	emp2.setposition("Programmer");
+	emp3.setname("Joy Rogers");
+	emp3.setid(81774);
+	emp3.setdepartment("Manufacturing");
+	emp3.setposition("Engineer");
+
+	cout << left << setw(20) << "Name" << setw(20) << "ID Number" << setw(20) << "Department" << setw(20) << "Position" << endl;
+	cout << left << setw(20) << emp1.getname() << setw(20) << emp1.getid() << setw(20) << emp1.getdepartment() << setw(20) << emp1.getposition() << endl;
+	cout << left << setw(20) << emp2.getname() << setw(20) << emp2.getid() << setw(20) << emp2.getdepartment() << setw(20) << emp2.getposition() << endl;
+	cout << left << setw(20) << emp3.getname() << setw(20) << emp3.getid() << setw(20) << emp3.getdepartment() << setw(20) << emp3.getposition() << endl;
+}
