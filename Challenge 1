@@ -1,0 +1,120 @@
+#include <iostream>
+using namespace std;
+
+class Date {
+private:
+	int month;
+	int day;
+	int year;
+
+public:
+	void setmonth(int);
+	void setday(int);
+	void setyear(int);
+	void getdate(int)const;
+};
+
+void Date::setmonth(int m) {
+	month = m;
+}
+void Date::setday(int d) {
+	day = d;
+}
+void Date::setyear(int y) {
+	year = y;
+}
+void Date::getdate(int x)const {
+	string monthname;
+	switch (month) {
+	case 1:
+		monthname = "January";
+		break;
+	case 2:
+		monthname = "February";
+		break;
+	case 3:
+		monthname = "March";
+		break;
+	case 4:
+		monthname = "April";
+		break;
+	case 5:
+		monthname = "May";
+		break;
+	case 6:
+		monthname = "June";
+		break;
+	case 7:
+		monthname = "July";
+		break;
+	case 8:
+		monthname = "August";
+		break;
+	case 9:
+		monthname = "September";
+		break;
+	case 10:
+		monthname = "October";
+		break;
+	case 11:
+		monthname = "November";
+		break;
+	case 12:
+		monthname = "December";
+		break;
+
+	}
+		
+	if (x == 1)
+		cout << month << "/" << day << "/" << year << endl;
+
+	else if (x == 2)
+		cout << monthname << " " << day << ", " << year;
+
+	else if (x == 3)
+		cout << day << " " << monthname << " " << year;
+}
+
+
+
+int main() {
+ 
+	Date myDate;
+	int day;
+	int month;
+	int year;
+	int choice;
+
+	cout << "1 = 12/25/2014 " << endl;
+	cout << "2 = December 25, 2014" << endl;
+	cout << "3 = 25 December 2014" << endl;
+	cout << "Choose your printing style from the examples above (1,2 or 3): ";
+	cin >> choice;
+
+	cout << "\nEnter the day as an integer: ";
+	cin >> day;
+	
+	if(day<=31 && day>=1)
+		myDate.setday(day);
+	else {
+		cout << "Invalid value.";
+		return 0 ;
+	}
+
+	cout << "\nEnter the month as an integer: ";
+	cin >> month;
+
+	if(month<=12 && month >=1)
+		myDate.setmonth(month);
+	else {
+		cout << "Invalid value.";
+		return 0;
+	}
+	cout << "\nEnter the year as an integer: ";
+	cin >> year;
+	
+	myDate.setyear(year);
+	cout << "\nThe date you entered is:" << endl;
+	myDate.getdate(choice);
+	
+}
