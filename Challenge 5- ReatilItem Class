@@ -1,0 +1,54 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+class ReatilItem {
+private:
+	string description;
+	int unitsOnHand;
+	double price;
+
+public:
+	ReatilItem(string,int,double);
+	void setdesc(string);
+	void setunit(int);
+	void setprice(double);
+	string getdesc()const;
+	int getunits()const;
+	double getprice()const;
+};
+ReatilItem::ReatilItem(string d, int u, double p) {
+	description = d;
+	unitsOnHand = u;
+	price = p;
+}
+void ReatilItem::setdesc(string d) {
+	description = d;
+}
+void ReatilItem::setunit(int u) {
+	unitsOnHand = u;
+}
+void ReatilItem::setprice(double p) {
+	price = p;
+}
+string ReatilItem::getdesc()const {
+	return description;
+}
+int ReatilItem::getunits()const {
+	return unitsOnHand;
+}
+double ReatilItem::getprice()const {
+	return price;
+}
+
+int main() {
+
+	ReatilItem item1("Jacket",12,59.95);
+	ReatilItem item2("Designer Jeans",40,34.95);
+	ReatilItem item3("Shirt",20,24.95);
+
+	cout << left << setw(20) << "Description" << setw(20) << "Units On Hand" << setw(20) << "Price" << endl;
+	cout << left << setw(20) << item1.getdesc() << setw(20) << item1.getunits() << setw(20) << item1.getprice() << endl;
+	cout << left << setw(20) << item2.getdesc() << setw(20) << item2.getunits() << setw(20) << item2.getprice() << endl;
+	cout << left << setw(20) << item3.getdesc() << setw(20) << item3.getunits() << setw(20) << item3.getprice() << endl;
+}
