@@ -16,7 +16,7 @@ December 25, 2014
 Demonstrate the class by writing a complete program implementing it.
 Input validation: Do not accept values for the day greater than 31 or less than 1. Do not accept values for the month greater than 12 or less than 1.
 
-3. Employee Class
+2. Employee Class
 
 Write a class named Employee that has the following member variables:
 
