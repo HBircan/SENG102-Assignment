@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+class Car {
+private:
+	int yearModel;
+	string make;
+	int speed;
+
+public:
+	Car(int, string);
+	void setyear(int);
+	void setmake(string);
+	void setspeed(int);
+	int getyear()const;
+	string getmake()const;
+	int getspeed()const;
+	void accelarate();
+	void brake();
+};
+
+Car::Car(int y, string m) {
+	yearModel = y;
+	make = m;
+	speed = 0;
+}
+void Car::setyear(int y) {
+	yearModel = y;
+}
+void Car::setmake(string m) {
+	make = m;
+}
+void Car::setspeed(int s) {
+	speed = s;
+}
+int Car::getyear()const {
+	return yearModel;
+}
+string Car::getmake()const {
+	return make;
+}
+int Car::getspeed()const {
+	return speed;
+}
+void Car::accelarate() {
+	speed = speed + 5;
+	
+}
+void Car::brake() {
+	speed = speed - 5;
+}
+
+int main() {
+
+	Car myCar(2020,"TOGG");
+	
+	cout << "The speed of the car at the beginning is " << myCar.getspeed() << endl;
+	for (int i = 1; i <= 5; i++) {
+		myCar.accelarate();	
+		cout << "The current speed of the car after accelareting #"<<i<<" is: " << myCar.getspeed() << endl;
+	}
+	for (int i = 1; i <= 5; i++) {
+		myCar.brake();
+		cout << "The current speed of the car after braking #" << i << " is: " << myCar.getspeed() << endl;
+	}
+}
