@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Mortgage {
+private:
+	double loan;
+	double rate;
+	double years;
+	double term;
+
+public:
+	void setloan(double);
+	void setrate(double);
+	void setyear(double);
+	void setterm();
+	double getpayment()const;
+	double gettotal()const;
+};
+
+void Mortgage::setloan(double l) {
+	loan = l;
+}
+void Mortgage::setrate(double r) {
+	rate = r;
+}
+void Mortgage::setyear(double y) {
+	years = y;
+}
+void Mortgage::setterm() {
+	term = pow(1 + rate / 12, 12 * years);
+}
+double Mortgage::getpayment()const {
+	return (loan * rate / 12 * term) / (term - 1);
+}
+double Mortgage::gettotal()const {
+	return getpayment() * 12 * years;
+}
+
+int main() {
+
+	Mortgage debt;
+	double loan;
+	double rate;
+	double years;
+	double term;
+
+	cout << "\nEnter the loan amount: ";
+	cin >> loan;
+
+	if (loan >= 0)
+		debt.setloan(loan);
+	else {
+		cout << "Invalid value.";
+		return 0;
+	}
+
+	cout << "\nEnter the interest rate: ";
+	cin >> rate;
+	debt.setrate(rate);
+
+	cout << "\nEnter the years: ";
+	cin >> years;
+    debt.setyear(years);
+	debt.setterm();
+
+	cout << "For the loan you entered: " << endl;
+	cout << "Monthly payment is: " << debt.getpayment() << endl;
+	cout << "Total amount to be payed at the end of the loan period is: " << debt.gettotal() << endl;
+}
