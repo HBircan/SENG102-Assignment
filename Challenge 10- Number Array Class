@@ -73,7 +73,7 @@ int main() {
 
 	for (int i = 1; i <= num; i++) {
 		float val;
-		cout << "Enter the member number " << i << " : ";
+		cout << "Enter the member #" << i << " : ";
 		cin >> val;
 		myArray.setarr(i - 1, val);
 	}
