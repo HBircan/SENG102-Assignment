@@ -1,0 +1,126 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class InventoryItem {
+private:
+	string description;
+	double cost;
+	int units;
+public:
+	InventoryItem() {
+		description = "";
+		cost = 0.0;
+		units = 0;
+	}
+	InventoryItem(string desc) {
+		description = desc;
+		cost = 0.0;
+		units = 0;
+	}
+	InventoryItem(string desc, double c, int u) {
+		description = desc;
+		cost = c;
+		units = u;
+	}
+	void setDescription(string d)
+	{
+		description = d;
+	}
+
+	void setCost(double c)
+	{
+		cost = c;
+	}
+	void setUnits(int u)
+	{
+		units = u;
+	}
+	string getDescription() const
+	{
+		return description;
+	}
+	double getCost() const
+	{
+		return cost;
+	}
+	int getUnits() const
+	{
+		return units;
+	}
+	friend class CashRegister;
+};
+class CashRegister {
+private:
+	string item;
+	int quantity;
+	double unitprice;
+	double cost;
+
+public:
+	void setitem(string s) {
+		item = s;
+	}
+	void setquan(int q) {
+		quantity = q;
+	}
+	void setcost(double c) {
+		cost = c;
+		unitprice = cost + (cost * 0.30);
+	}
+	string getitem()const {
+		return item;
+	}
+	int getquan()const {
+		return quantity;
+	}
+	double getprofit()const {
+		return cost * 0.30;
+	}
+	double getunitprice()const {
+		return unitprice;
+	}
+	double getsubtotal()const {
+		return quantity * unitprice;
+	}
+	double gettax()const {
+		return quantity * unitprice * 0.06;
+	}
+	double gettotal()const {
+		return (quantity * unitprice * 0.06) + (quantity * unitprice);
+	}
+};
+
+
+int main() {
+	InventoryItem sell("Raft",100,50);
+	CashRegister buy;
+	string item;
+	int number;
+
+	cout << "Enter the item you want to purchase: ";
+	cin >> item;
+	buy.setitem(item);
+
+	cout << "Enter the quantity being purchased: ";
+	cin >> number;
+	if (number >= 0)
+		buy.setquan(number);
+	else {
+		cout << "Invalid value.";
+		return 0;
+	}
+
+	
+	if (buy.getitem() == sell.getDescription()) {
+		buy.setcost(sell.getCost());
+		cout << "\nThe purchase subtotal is: $" << buy.getsubtotal() << endl;
+		cout << "The tax is: $" << buy.gettax() << endl;
+		cout << "Final purchase total with tax is: $" << buy.gettotal() << endl;
+		sell.setUnits(sell.getUnits() - buy.getquan());
+
+	}
+	else
+		cout << "Unfortunantly we don't have the item you are looking for.";
+
+}
