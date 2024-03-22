@@ -1,0 +1,92 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Temperature {
+private:
+	int temperature;
+
+public:
+	void settemp(int);
+	int gettemp()const;
+	bool isEthylFreezing()const;
+	bool isOxygenFreezing()const;
+	bool isWaterFreezing()const;
+	bool isEthylBoiling()const;
+	bool isOxygenBoiling()const;
+	bool isWaterBoiling()const;
+
+};
+
+void Temperature::settemp(int t) {
+	temperature = t;
+}
+int Temperature::gettemp()const {
+	return temperature;
+}
+bool Temperature::isEthylFreezing()const {
+	if (temperature <= -173)
+		return true;
+	else
+		return false;
+}
+bool Temperature::isOxygenFreezing()const {
+	if (temperature <= -362)
+		return true;
+	else
+		return false;
+}
+bool Temperature::isWaterFreezing()const {
+	if (temperature <= 32)
+		return true;
+	else
+		return false;
+}
+bool Temperature::isEthylBoiling()const {
+	if (temperature >= 172)
+		return true;
+	else
+		return false;
+}
+bool Temperature::isOxygenBoiling()const {
+	if (temperature >= -306)
+		return true;
+	else
+		return false;
+}
+bool Temperature::isWaterBoiling()const {
+	if (temperature >= 212)
+		return true;
+	else
+		return false;
+}
+
+
+int main() {
+	Temperature myTemp;
+	int temp;
+
+	cout << "\nEnter the temperature: ";
+	cin >> temp;
+	
+	myTemp.settemp(temp);
+
+	if (myTemp.isEthylFreezing() == true)
+		cout << "Ethyl is freezing. ";
+
+	if (myTemp.isOxygenFreezing() == true)
+		cout << "Oxygen is boiling. ";
+
+	if (myTemp.isWaterFreezing() == true)
+		cout << "Water is freezing. ";
+
+	if (myTemp.isEthylBoiling() == true)
+		cout << "Ethyl is boiling. ";
+
+	if (myTemp.isOxygenBoiling() == true)
+		cout << "Oxygen is boiling. ";
+
+	if (myTemp.isWaterBoiling() == true)
+		cout << "Water is boiling. ";
+	 
+}
