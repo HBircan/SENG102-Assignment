@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cstdlib> // for rand() and srand()
+#include <ctime> // for time()
+using namespace std;
+
+class Coin {
+private:
+    string sideUp;
+
+public:
+    Coin();
+    void toss();
+    string getSideUp() const;
+};
+
+Coin::Coin() {
+    srand(time(nullptr)); // Seed the random number generator
+    if (rand() % 2 == 0) { // 50% chance of getting 0 or 1
+        sideUp = "Tails";
+    }
+    else {
+        sideUp = "Heads";
+    }
+}
+
+void Coin::toss() {
+    if (rand() % 2 == 0) { // 50% chance of getting 0 or 1
+        sideUp = "Tails";
+    }
+    else {
+        sideUp = "Heads";
+    }
+}
+
+string Coin::getSideUp() const {
+    return sideUp;
+}
+
+int main() {
+    int countHeads = 0;
+    int countTails = 0;
+    Coin coin;
+    cout << "Initial side facing up is: " << coin.getSideUp() << endl;
+    for (int i = 1; i <= 20; i++) {
+        coin.toss();
+        cout << "The side up after toss #" << i << " : " << coin.getSideUp() << endl;
+        if (coin.getSideUp() == "Heads")
+            countHeads++;
+        else if (coin.getSideUp() == "Tails")
+            countTails++;
+    }
+    cout << "Number of tails: " << countTails << endl;
+    cout << "Number of heads: " << countHeads << endl;
+}
