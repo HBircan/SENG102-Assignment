@@ -1,0 +1,86 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+class Population {
+private:
+	double population;
+	double birthNum;
+	double deathNum;
+
+public:
+	void setpopulation(double);
+	void setbirth(double);
+	void setdeath(double);
+	double getpopulation()const;
+	double getdeath()const;
+	double getbirth()const;
+	double getdeathrate()const;
+	double getbirthrate()const;
+};
+
+void Population::setpopulation(double p) {
+	population = p;
+}
+void Population::setbirth(double b) {
+	birthNum = b;
+}
+void Population::setdeath(double d) {
+	deathNum = d;
+}
+double Population::getdeath()const {
+	return deathNum;
+}
+double Population::getbirth()const {
+	return birthNum;
+}
+double Population::getpopulation()const {
+	return population;
+}
+double Population::getbirthrate()const {
+	return birthNum / population;
+}
+double Population::getdeathrate()const {
+	return deathNum / population;
+}
+
+int main() {
+	Population total;
+	double population;
+	double death;
+	double birth;
+
+	cout << "\nEnter the population : ";
+	cin >> population;
+
+	if (population >= 1)
+		total.setpopulation(population);
+	else {
+		cout << "Invalid value.";
+		return 0;
+	}
+
+	cout << "\nEnter the number of deaths : ";
+	cin >> death;
+
+	if (death >= 0)
+		total.setdeath(death);
+	else {
+		cout << "Invalid value.";
+		return 0;
+	}
+
+	cout << "\nEnter the number of births : ";
+	cin >> birth;
+
+	if (birth >= 0)
+		total.setbirth(birth);
+	else {
+		cout << "Invalid value.";
+		return 0;
+	}
+	cout << "\nIn the population of " << total.getpopulation() << " that has " << total.getdeath() << " deaths and " << total.getbirth() << " births per year, the birth rate and death rate are:" << endl;
+	cout << setprecision(2) << fixed;
+	cout << "Birth Rate = " << total.getbirthrate() << endl;
+	cout << "Death Rate = " << total.getdeathrate() << endl;
+}
