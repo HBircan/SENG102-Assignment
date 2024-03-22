@@ -59,11 +59,11 @@ int main() {
 	Question trivia[10];
 	cout << "Ready Player 1!\n" << endl;
 	for (int i = 0; i < 5; i++) {
-		trivia[i].settrivia("Q");
-		trivia[i].setc1("A");
-		trivia[i].setw2("B");
-		trivia[i].setw3("C");
-		trivia[i].setw4("D");
+		trivia[i].settrivia("Q"); //placeholder question
+		trivia[i].setc1("A"); //placeholder answer
+		trivia[i].setw2("B"); //placeholder answer
+		trivia[i].setw3("C"); //placeholder answer
+		trivia[i].setw4("D"); //placeholder answer
 		cout << trivia[i].gettrivia() << endl;
 		cout << trivia[i].getc1() << endl;
 		cout << trivia[i].getw2() << endl;
@@ -78,11 +78,11 @@ int main() {
 	}
 	cout << "\nReady Player 2!\n" << endl;
 	for (int i = 5; i < 10; i++) {
-		trivia[i].settrivia("Q");
-		trivia[i].setc1("A");
-		trivia[i].setw2("B");
-		trivia[i].setw3("C");
-		trivia[i].setw4("D");
+		trivia[i].settrivia("Q"); //placeholder question
+		trivia[i].setc1("A"); //placeholder answer
+		trivia[i].setw2("B"); //placeholder answer
+		trivia[i].setw3("C"); //placeholder answer
+		trivia[i].setw4("D"); //placeholder answer
 		cout << trivia[i].gettrivia() << endl;
 		cout << trivia[i].getc1() << endl;
 		cout << trivia[i].getw2() << endl;
