@@ -1,0 +1,85 @@
+#include <iostream>
+#include <iomanip>
+#include <array>
+using namespace std;
+
+class NumArray {
+private:
+	float* myArray;
+	int number;
+public:
+	NumArray();
+	~NumArray();
+	void setnum(int);
+	void setarr(int, float);
+	float getarr(int)const;
+	float getmax()const;
+	float getmin()const;
+	float getavg()const;
+};
+NumArray::NumArray() {
+	myArray = new float[number];
+}
+NumArray::~NumArray() {
+	delete[] myArray;
+}
+void NumArray::setnum(int n) {
+	number = n;
+}
+void NumArray::setarr(int a, float b) {
+	myArray[a] = b;
+}
+float NumArray::getarr(int a)const {
+	return myArray[a];
+}
+float NumArray::getmax()const {
+	float max = myArray[0];
+	for (int i = 1; i < number; i++) {
+		if (myArray[i] > max) {
+			max = myArray[i];
+		}
+	}
+	return max;
+}
+float NumArray::getmin()const {
+	float min = myArray[0];
+	for (int i = 1; i < number; i++) {
+		if (myArray[i] < min) {
+			min = myArray[i];
+		}
+	}
+	return min;
+}
+float NumArray::getavg()const {
+	float total = 0;
+	for (int i = 0; i < number; i++) {
+		total += myArray[i];
+	}
+	return total / number;
+}
+int main() {
+	int num;
+
+	cout << "\nEnter the number of members in your array: ";
+	cin >> num;
+	NumArray myArray;
+
+	if (num > 0)
+		myArray.setnum(num);
+	else {
+		cout << "Invalid value.";
+		return 0;
+	}
+
+	for (int i = 1; i <= num; i++) {
+		float val;
+		cout << "Enter the member number " << i << " : ";
+		cin >> val;
+		myArray.setarr(i - 1, val);
+	}
+	cout << "\nFrom the array members you entered: " << endl;
+	cout << "The highest value is: " << myArray.getmax() << endl;
+	cout << "The lowest value is: " << myArray.getmin() << endl;
+	cout << "The avarage value is: " << myArray.getavg() << endl;
+
+}
