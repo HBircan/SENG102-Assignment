@@ -1,0 +1,106 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Question {
+private:
+	string trivia;
+	string answer1; //correct answer variable
+	string answer2; //wrong answer variable
+	string answer3; //wrong answer variable
+	string answer4; //wrong answer variable
+public:
+	void settrivia(string);
+	void setc1(string); // c = correct
+	void setw2(string); // w = wrong
+	void setw3(string); // w = wrong
+	void setw4(string); // w = wrong 
+	string gettrivia()const;
+	string getc1()const;
+	string getw2()const;
+	string getw3()const;
+	string getw4()const;
+};
+void Question::settrivia(string s) {
+	trivia = s;
+}
+void Question::setc1(string a) {
+	answer1 = a;
+}
+void Question::setw2(string a) {
+	answer2 = a;
+}
+void Question::setw3(string a) {
+	answer3 = a;
+}
+void Question::setw4(string a) {
+	answer4 = a;
+}
+string Question::gettrivia() const {
+	return trivia;
+}
+string Question::getc1() const {
+	return answer1;
+}
+string Question::getw2() const {
+	return answer2;
+}
+string Question::getw3() const {
+	return answer3;
+}
+string Question::getw4() const {
+	return answer4;
+}
+
+int main() {
+	int player1 = 0;
+	int player2 = 0;
+	string ans;
+	Question trivia[10];
+	cout << "Ready Player 1!\n" << endl;
+	for (int i = 0; i < 5; i++) {
+		trivia[i].settrivia("Q");
+		trivia[i].setc1("A");
+		trivia[i].setw2("B");
+		trivia[i].setw3("C");
+		trivia[i].setw4("D");
+		cout << trivia[i].gettrivia() << endl;
+		cout << trivia[i].getc1() << endl;
+		cout << trivia[i].getw2() << endl;
+		cout << trivia[i].getw3() << endl;
+		cout << trivia[i].getw4() << endl;
+		cout << "Enter your answer: ";
+		cin >> ans;
+		if (ans == trivia[i].getc1()) {
+			player1 += 1;
+		}
+
+	}
+	cout << "\nReady Player 2!\n" << endl;
+	for (int i = 5; i < 10; i++) {
+		trivia[i].settrivia("Q");
+		trivia[i].setc1("A");
+		trivia[i].setw2("B");
+		trivia[i].setw3("C");
+		trivia[i].setw4("D");
+		cout << trivia[i].gettrivia() << endl;
+		cout << trivia[i].getc1() << endl;
+		cout << trivia[i].getw2() << endl;
+		cout << trivia[i].getw3() << endl;
+		cout << trivia[i].getw4() << endl;
+		cout << "Enter your answer: ";
+		cin >> ans;
+		if (ans == trivia[i].getc1()) {
+			player2 += 1;
+		}
+
+	}
+	cout << "\nPoints of Player 1 is: " << player1 << endl;
+	cout << "Points of Player 2 is: " << player2 << endl;
+	if (player1 < player2)
+		cout << "\nThe winner is Player 2!";
+	else if (player2 < player1)
+		cout << "\nThe winner is Player 1!";
+	else if (player1 == player2)
+		cout << "\nIt's a Draw!";
+}
