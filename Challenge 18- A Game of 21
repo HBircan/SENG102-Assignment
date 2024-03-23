@@ -1,0 +1,119 @@
+#include <iostream>
+#include <cstdlib> // For rand and srand
+#include <ctime> // For the time function
+using namespace std;
+
+class Die {
+private:
+	int sides; // Number of sides
+	int value; // The die's value			
+public:
+	Die(int = 6); // Constructor	
+	void roll(); // Rolls the die	
+	int getSides(); // Returns the number of sides	
+	int getValue(); // Returns the die's value
+
+};
+Die::Die(int numSides) {
+	// Get the system time.
+	unsigned seed = time(0);
+	// Seed the random number generator.		
+	srand(seed);
+	// Set the number of sides.	
+	sides = numSides;
+	// Perform an initial roll.	
+	roll();
+}
+void Die::roll() {
+	// Constant for the minimum die value		
+	const int MIN_VALUE = 1; // Minimum die value		
+	// Get a random value for the die.		
+	value = (rand() % (sides - MIN_VALUE + 1)) + MIN_VALUE;
+}
+int Die::getSides() {
+	return sides;
+}
+int Die::getValue() {
+	return value;
+}
+
+int main() {
+	int points = 0;
+	int computer = 0;
+	string enter;
+	Die die;
+	cout << "Would you like to roll? Y/N: ";
+	cin >> enter;
+	while (enter != "N" && points <= 21) {
+		for (int i = 1; i <= 2; i++) {
+			die.roll();
+			switch (die.getValue()) {
+			case 1:
+				computer += 1;
+				break;
+			case 2:
+				computer += 2;
+				break;
+			case 3:
+				computer += 3;
+				break;
+			case 4:
+				computer += 4;
+				break;
+			case 5:
+				computer += 5;
+				break;
+			case 6:
+				computer += 6;
+				break;
+
+			}
+		}
+		for (int i = 1; i <= 2; i++) {
+			die.roll();
+			switch (die.getValue()) {
+			case 1:
+				points += 1;
+				break;
+			case 2:
+				points += 2;
+				break;
+			case 3:
+				points += 3;
+				break;
+			case 4:
+				points += 4;
+				break;
+			case 5:
+				points += 5;
+				break;
+			case 6:
+				points += 6;
+				break;
+
+			}
+		}
+		cout << "\nYou've earned some amount of points...";
+		cout << "\n\nWould you like to roll again? Y/N: ";
+		cin >> enter;
+	}
+	if (points > 21) {
+		cout << "Your points passed 21. Try again.";
+		return 0;
+	}
+	else {
+		cout << "\nYou've earned " << points << " points.";
+		cout << "\nThe computer earned " << computer << " points." << endl;
+		if (computer == points)
+			cout << "It's a draw! Congratulations!";
+		else if (computer < points) {
+			cout << "You won! Congratulations!";
+		}
+		else if (computer > points) {
+			cout << "Congratulations! You lost. Better luck next time.";
+		}
+		return 0;
+	}
+
+
+}
