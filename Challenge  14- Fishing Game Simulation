@@ -1,0 +1,89 @@
+#include <iostream>
+#include <cstdlib> // For rand and srand
+#include <ctime> // For the time function
+using namespace std;
+
+class Die {
+private:
+	int sides; // Number of sides
+	int value; // The die's value			
+public:
+	Die(int = 6); // Constructor	
+	void roll(); // Rolls the die	
+	int getSides(); // Returns the number of sides	
+	int getValue(); // Returns the die's value
+
+};
+Die::Die(int numSides) {
+	// Get the system time.
+	unsigned seed = time(0);
+	// Seed the random number generator.		
+	srand(seed);
+	// Set the number of sides.	
+	sides = numSides;
+	// Perform an initial roll.	
+	roll();
+}
+void Die::roll() {
+	// Constant for the minimum die value		
+	const int MIN_VALUE = 1; // Minimum die value		
+	// Get a random value for the die.		
+	value = (rand() % (sides - MIN_VALUE + 1)) + MIN_VALUE;
+}
+int Die::getSides() {
+	return sides;
+}
+int Die::getValue() {
+	return value;
+}
+
+int main() {
+	int points = 0;
+	string enter;
+	Die die;
+	cout << "Would you like to fish? Y/N: ";
+	cin >> enter;
+	while (enter != "N") {
+		die.roll();
+		cout << "\nYou cought ";
+		switch (die.getValue()) {
+		case 1:
+			cout << "a big tuna.";
+			points += 20;
+			break;
+		case 2:
+			cout << "a shark!";
+			points += 50;
+			break;
+		case 3:
+			cout << "an old shoe. Whops.";
+			points += 1;
+			break;
+		case 4:
+			cout << "a gold ring!";
+			points += 100;
+			break;
+		case 5:
+			cout << "a small clown fish.";
+			points += 10;
+			break;
+		case 6:
+			cout << "nothing. The fish ate the bait and ran.";
+			break;
+
+		}
+		cout << "\n\nWould you like to fish again? Y/N: ";
+		cin >> enter;
+	}
+
+
+	cout << "\nYou've earned ";
+	if (points == 0)
+		cout << "... 0 points. Congratulations?";
+	else if (points < 100)
+		cout << points << " points. Congratulations.";
+	else if (points > 100)
+		cout << points << " points! Congratulations!";
+	return 0;
+
+}
